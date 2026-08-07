@@ -281,7 +281,6 @@ void testPCLNDT(pcl::PointCloud<pcl::PointXYZ>::Ptr pcl_cloud_in,
   Eigen::AngleAxisf init_rotation (0.6931, Eigen::Vector3f::UnitZ ());
   Eigen::Translation3f init_translation (1.79387, 0.720047, 0);
   Eigen::Matrix4f init_guess = (init_translation * init_rotation).matrix ();
-  init_guess = matrix_trans;
 
   // Calculating required rigid transform to align the input cloud to the target cloud.
   pcl::PointCloud<pcl::PointXYZ>::Ptr transformedP (new pcl::PointCloud<pcl::PointXYZ>(pCount, 1));
