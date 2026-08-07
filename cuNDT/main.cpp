@@ -165,7 +165,6 @@ void testcudaNDT(pcl::PointCloud<pcl::PointXYZ>::Ptr pcl_cloud_in,
   Eigen::AngleAxisf init_rotation (0.6931, Eigen::Vector3f::UnitZ ());
   Eigen::Translation3f init_translation (1.79387, 0.720047, 0);
   Eigen::Matrix4f init_guess = (init_translation * init_rotation).matrix ();
-  init_guess = matrix_trans;
 
   std::cout << "------------checking CUDA NDT(GPU)---------------- "<< std::endl;
   /************************************************/
