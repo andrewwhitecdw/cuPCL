@@ -20,6 +20,8 @@
  * DEALINGS IN THE SOFTWARE.
  */
 #pragma once
+#include <iostream>
+#include <cstdlib>
 #include "cuda_runtime.h"
 #define checkCudaErrors(status)                                   \
 {                                                                 \
