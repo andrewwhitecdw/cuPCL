@@ -99,6 +99,7 @@ void testCUDA(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud)
   cudaSeg.set(setP);
   cudaMemcpyAsync(input, inputData, sizeof(float) * 4 * nCount, cudaMemcpyHostToDevice, stream);
   cudaSeg.segment(input, nCount, index, modelCoefficients);
+  cudaStreamSynchronize(stream);
 
   for(int i = 0; i < nCount; i++)
   {
