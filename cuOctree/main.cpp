@@ -285,7 +285,7 @@ int main(int argc, const char **argv)
   if(argc > 1) file = (argv[1]);
 
   std::string file1 = "./test_Q.pcd";
-  if(argc > 1) file1 = (argv[2]);
+  if(argc > 2) file1 = (argv[2]);
 
   Getinfo();
 
