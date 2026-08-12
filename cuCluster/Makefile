@@ -174,7 +174,7 @@ $(OBJ_FILES_CU): $(OBJ_DIR)/%.o: %.cu
 	$(NVCC) $(INCLUDE) $(CXXFLAGS) $(CCFLAGS) $(NVCCFLAGS) -lineinfo $(GENCODE_FLAGS) -Xcompiler -fPIC -c $< -o $@
 
 $(TARGET): $(OBJ_FILES_CU) $(OBJ_FILES_CPP)
-	$(CC) $(CCFLAGS) $(CXXFLAGS) -o $@ $^ $(LIBRARIES) $(LIBRARY_FILES)
+	$(CC) $(CCFLAGS) $(CXXFLAGS) -o $@ $^ $(LDFLAGS) $(LIBRARIES) $(LIBRARY_FILES)
 	@echo
 
 clean:
