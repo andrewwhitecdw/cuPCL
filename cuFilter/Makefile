@@ -143,12 +143,20 @@ INCLUDE     += $(CUDA_CFLAGS)
 INCLUDE     += -I/usr/local/include
 INCLUDE     += -I/usr/include/eigen3/ -I/usr/include/pcl-1.10/ -I/usr/include/vtk-6.3/
 
+# Use Debian/Ubuntu multiarch library path for PCL/Boost, so the
+# architecture is not hard-coded to aarch64.
+DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
+ifeq ($(DEB_HOST_MULTIARCH),)
+    DEB_HOST_MULTIARCH := $(TARGET_ARCH)-linux-gnu
+endif
+PCL_LIB_DIR := /usr/lib/$(DEB_HOST_MULTIARCH)
+
 LIBRARIES   :=
 LIBRARIES   += -L/usr/lib
 LIBRARIES   += -L/usr/local/lib
 LIBRARIES   += $(CUDA_LIBS)
 LIBRARIES   += -lpthread
-LIBRARIES   += -L/usr/lib/aarch64-linux-gnu/ -lboost_system -lpcl_common -lpcl_io -lpcl_recognition -lpcl_features -lpcl_sample_consensus -lpcl_octree -lpcl_search -lpcl_filters -lpcl_kdtree -lpcl_segmentation -lpcl_visualization
+LIBRARIES   += -L$(PCL_LIB_DIR) -lboost_system -lpcl_common -lpcl_io -lpcl_recognition -lpcl_features -lpcl_sample_consensus -lpcl_octree -lpcl_search -lpcl_filters -lpcl_kdtree -lpcl_segmentation -lpcl_visualization
 
 OBJ_DIR     := obj
 
