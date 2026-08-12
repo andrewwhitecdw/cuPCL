@@ -21,6 +21,8 @@
  */
 #pragma once
 #include "cuda_runtime.h"
+#include <iostream>
+#include <cstdlib>
 #define checkCudaErrors(status)                                   \
 {                                                                 \
   if (status != 0)                                                \
@@ -30,7 +32,7 @@
               << " in file " << __FILE__                          \
               << " error status: " << status                      \
               << std::endl;                                       \
-              abort();                                            \
+              std::abort();                                       \
     }                                                             \
 }
 
