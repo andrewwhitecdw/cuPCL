@@ -148,7 +148,10 @@ LIBRARIES   += -L/usr/lib
 LIBRARIES   += -L/usr/local/lib
 LIBRARIES   += $(CUDA_LIBS)
 LIBRARIES   += -lpthread
-LIBRARIES   += -L/usr/lib/aarch64-linux-gnu/ -lboost_system -lpcl_common -lpcl_io -lpcl_recognition -lpcl_features -lpcl_sample_consensus -lpcl_octree -lpcl_search -lpcl_filters -lpcl_kdtree -lpcl_segmentation -lpcl_visualization
+ifeq ($(TARGET_ARCH), aarch64)
+LIBRARIES   += -L/usr/lib/aarch64-linux-gnu/
+endif
+LIBRARIES   += -lboost_system -lpcl_common -lpcl_io -lpcl_recognition -lpcl_features -lpcl_sample_consensus -lpcl_octree -lpcl_search -lpcl_filters -lpcl_kdtree -lpcl_segmentation -lpcl_visualization
 
 OBJ_DIR     := obj
 
